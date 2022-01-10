@@ -141,11 +141,11 @@
     margin: 0 !important;
 }
 
-.nav-sidebar .menu-open > .nav-link i {
+.nav-sidebar .menu-open > .nav-link > i {
     transform: rotate(-90deg);
 }
 
-.nav-sidebar .nav-item > .nav-link i {
+.nav-sidebar .nav-item > .nav-link > i {
     transition: transform .1s ease-in-out;
 }
 

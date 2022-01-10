@@ -7,7 +7,8 @@
 
 @foreach($menu as $item)
     @if(! empty($item['children']))
-        <li class="{{ $horizontal ? 'dropdown' : 'has-treeview' }} dropdown-submenu sub-item nav-item {{ $builder->isActive($item) ? 'menu-open' : '' }}">
+        <li data-tree-id="{{$item['id']}}"
+            class="{{ $horizontal ? 'dropdown' : 'has-treeview' }} dropdown-submenu sub-item nav-item {{ $builder->isActive($item) ? 'menu-open' : '' }}">
             <a @if(mb_strpos($item['uri'], '://') !== false) target="_blank" @endif
             href="#"
                class="sub-link nav-link  {{ $builder->isActive($item) ? ($horizontal ? 'sub-active' : '') : '' }}

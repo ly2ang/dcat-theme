@@ -20,13 +20,13 @@ Dcat.ready(function () {
         let subMenu = $(".sub-menu-item[data-sub-id='" + id + "']");
         let menuActive = {parentID: id, subID: 1};
         subMenu.css('display', 'block')
-        subMenu.find('a').each(function () {
+        subMenu.find('a.sub-link').each(function () {
             let $that = $(this)
             if (href === $that.attr('href')) {
                 let subParent = $that.parents().eq(2)
                 if (subParent.hasClass('has-treeview')) {
                     subParent.addClass('menu-open')
-                    subParent.children('ul').css('display', 'block')
+                    $that.parents().eq(1).css('display', 'block')
                 }
                 $that.addClass('sub-active')
                 menuActive.subID = $that.attr('data-id')
@@ -49,7 +49,7 @@ Dcat.ready(function () {
                 let $that = $(this);
                 if ($that.parent().attr('data-sub-id') !== subParent.parent().attr('data-sub-id')) {
                     $that.removeClass('menu-open')
-                    $that.children('ul').css('display', 'none')
+                    $that.parents().eq(1).css('display', 'block')
                 }
             })
             let menuActive = JSON.parse(localStorage.getItem('menuActive'))

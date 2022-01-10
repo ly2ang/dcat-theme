@@ -26,6 +26,7 @@ Dcat.ready(function () {
                 let subParent = $that.parents().eq(2)
                 if (subParent.hasClass('has-treeview')) {
                     subParent.addClass('menu-open')
+                    subParent.children('ul').css('display', 'block')
                 }
                 $that.addClass('sub-active')
                 menuActive.subID = $that.attr('data-id')
@@ -60,8 +61,8 @@ Dcat.ready(function () {
     // 页面刷新操作后自动选中刷新之前的菜单
     function active_menu() {
         let parentIsActive = false, $this = $(this);
-        $('.side-scroll').find('li').each(function () {
-            if ($this.children('a').hasClass('side-nav-active')) {
+        $('.side-scroll').find('li.side-nav-item').each(function () {
+            if ($(this).children('a').hasClass('side-nav-active')) {
                 parentIsActive = true
             }
         })

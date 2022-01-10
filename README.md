@@ -1,5 +1,8 @@
-# Dcat Admin Extension
+# Dcat-Theme
 
+## 截图
+
+![演示](https://github.com/canbez/dcat-theme/blob/f3a88b3304057d79bacade588350896c084c9f38/resources/assets/images/example.png?raw=true)
 
 ## 环境要求
 
@@ -10,13 +13,14 @@
 ### Composer 安装
 
 ``` bash
-$ composer require guanguans/dcat-login-captcha -vvv
+composer require canbez/dcat-theme
 ```
 
-### 后台 -> 开发工具 -> 扩展列表
+### 使用
 
-启用本扩展。
+`composer` 安装之后，需要在扩展管理页面点击` 更新至1.0.0版本`以及` 启用 `按钮，之后 **刷新页面** 方可正常使用
 
-## 协议
+如下图所示：
 
-MIT 许可证（MIT）。有关更多信息，请参见[协议文件](LICENSE)。
+![更新](https://github.com/canbez/dcat-theme/blob/master/resources/assets/images/update.png?raw=true)
+![启用](https://github.com/canbez/dcat-theme/blob/master/resources/assets/images/enable.png?raw=true)

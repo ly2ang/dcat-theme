@@ -1,5 +1,7 @@
 # Dcat-Theme
 
+一款双栏菜单主题
+
 ## 截图
 
 ![演示](https://github.com/canbez/dcat-theme/blob/f3a88b3304057d79bacade588350896c084c9f38/resources/assets/images/example.png?raw=true)

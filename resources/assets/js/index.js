@@ -11,9 +11,11 @@ Dcat.ready(function () {
 
     // 父菜单选中操作
     $(".side-nav-link").click(function () {
-        let $this = $(this), id = $this.attr('data-id');
+        let $this = $(this), id = $this.attr('data-id'), treeview = $(".has-treeview");
         $(".side-nav-link").removeClass('side-nav-active active')
         $(".sub-link").removeClass('sub-active active')
+        treeview.removeClass('menu-open')
+        treeview.children('ul').css('display', 'none')
         $this.addClass('side-nav-active')
         let href = $this.attr('href');
         $(".sub-menu-item").css('display', 'none')
@@ -22,11 +24,11 @@ Dcat.ready(function () {
         subMenu.css('display', 'block')
         subMenu.find('a.sub-link').each(function () {
             let $that = $(this)
+            let subParent = $that.parents().eq(2)
             if (href === $that.attr('href')) {
-                let subParent = $that.parents().eq(2)
                 if (subParent.hasClass('has-treeview')) {
                     subParent.addClass('menu-open')
-                    $that.parents().eq(1).css('display', 'block')
+                    subParent.children('ul').css('display', 'block')
                 }
                 $that.addClass('sub-active')
                 menuActive.subID = $that.attr('data-id')
@@ -45,11 +47,11 @@ Dcat.ready(function () {
             if (subParent.hasClass('has-treeview')) {
                 subParent.addClass('menu-open')
             }
-            $('.has-treeview').each(function () {
+            subParent.parent().find('.has-treeview').each(function () {
                 let $that = $(this);
-                if ($that.parent().attr('data-sub-id') !== subParent.parent().attr('data-sub-id')) {
+                if (subParent.attr('data-tree-id') !== $that.attr('data-tree-id')) {
                     $that.removeClass('menu-open')
-                    $that.parents().eq(1).css('display', 'block')
+                    $that.children('ul').css('display', 'none')
                 }
             })
             let menuActive = JSON.parse(localStorage.getItem('menuActive'))

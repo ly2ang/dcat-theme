@@ -70,6 +70,6 @@ class DcatThemeServiceProvider extends ServiceProvider
             $menus       = Helper::buildNestedArray($allNodes);
             $tool        = new Menu();
             return view('canbez.dcat-theme::menu', ['builder' => $builder, 'menus' => $menus, 'tool' => $tool]);
-        });
+        }, false);
     }
 }

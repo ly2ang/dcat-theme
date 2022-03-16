@@ -28,14 +28,16 @@
 </aside>
 <aside class="sub-menu">
     @foreach($menus as $item)
-        <div class="sub-menu-item" data-sub-id="{{$item['id']}}"
-             style="display: {{$builder->isActive($item) ? 'block':'none'}}">
-            @if(! empty($item['children']))
-                <h4>{!! $builder->translate($item['title']) !!}</h4>
-                @include('canbez.dcat-theme::sub-menu', ['menu' => $item['children']])
-            @else
-                @include('canbez.dcat-theme::menu-item', ['item' => $item])
-            @endif
-        </div>
+        @if($builder->visible($item))
+            <div class="sub-menu-item" data-sub-id="{{$item['id']}}"
+                 style="display: {{$builder->isActive($item) ? 'block':'none'}}">
+                @if(! empty($item['children']))
+                    <h4>{!! $builder->translate($item['title']) !!}</h4>
+                    @include('canbez.dcat-theme::sub-menu', ['menu' => $item['children']])
+                @else
+                    @include('canbez.dcat-theme::menu-item', ['item' => $item])
+                @endif
+            </div>
+        @endif
     @endforeach
 </aside>

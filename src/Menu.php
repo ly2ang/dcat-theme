@@ -8,19 +8,14 @@ class Menu
      * 获取当前菜单下第一条子菜单的 uri
      *
      * @param $menu
-     * @return mixed
+     * @return string
      */
-    public function getFirstChildrenUrl($menu)
+    public function getFirstChildrenUrl($menu): string
     {
         if (! empty($menu['children'])) {
-
-            if (! empty($menu['children'][0]['children'])) {
-                return $this->getFirstChildrenUrl($menu['children'][0]);
-            }
-
-            return $menu['children'][0]['uri'];
+            return 'javascript:void(0);';
         }
 
-        return $menu['uri'];
+        return admin_url($menu['uri']);
     }
 }

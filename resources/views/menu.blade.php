@@ -15,7 +15,12 @@
         @if($builder->visible($item))
             <li class="side-nav-item">
                 <a data-id="{{ $item['id'] ?? '' }}"
-                   href="{{ $builder->getUrl($tool->getFirstChildrenUrl($item)) }}"
+                   @if($item['id'] === 1)
+                   href="/"
+                   @else
+                   href="javascript:void(0);"
+                   @endif
+                   data-href="{{ $builder->getUrl($tool->getFirstChildrenUrl($item)) }}"
                    class="side-nav-link {!! $builder->isActive($item) ? 'side-nav-active' : '' !!}">
                     <i class="fa fa-fw {{ $item['icon'] ?: $defaultIcon }}"></i>
                     <p>

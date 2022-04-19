@@ -20,21 +20,21 @@ Dcat.ready(function () {
         let href = $this.attr('href');
         $(".sub-menu-item").css('display', 'none')
         let subMenu = $(".sub-menu-item[data-sub-id='" + id + "']");
-        let menuActive = {parentID: id, subID: 1};
         subMenu.css('display', 'block')
         subMenu.find('a.sub-link').each(function () {
             let $that = $(this)
             let subParent = $that.parents().eq(2)
-            if (href === $that.attr('href')) {
+            let active = JSON.parse(localStorage.getItem('menuActive'))
+            if (active.subID === $that.attr('data-id') || href != 'javascript:void(0);') {
                 if (subParent.hasClass('has-treeview')) {
                     subParent.addClass('menu-open')
                     subParent.children('ul').css('display', 'block')
                 }
                 $that.addClass('sub-active')
-                menuActive.subID = $that.attr('data-id')
+                let menuActive = {parentID: id, subID: $that.attr('data-id')};
+                localStorage.setItem('menuActive', JSON.stringify(menuActive))
             }
         })
-        localStorage.setItem('menuActive', JSON.stringify(menuActive))
     })
 
     // 子菜单选中操作
@@ -62,7 +62,7 @@ Dcat.ready(function () {
 
     // 页面刷新操作后自动选中刷新之前的菜单
     function active_menu() {
-        let parentIsActive = false, $this = $(this);
+        let parentIsActive = false;
         $('.side-scroll').find('li.side-nav-item').each(function () {
             if ($(this).children('a').hasClass('side-nav-active')) {
                 parentIsActive = true

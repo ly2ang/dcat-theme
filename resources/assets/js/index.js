@@ -68,21 +68,28 @@ Dcat.ready(function () {
                 parentIsActive = true
             }
         })
+        let menuActive;
         if (!parentIsActive) {
-            let menuActive = JSON.parse(localStorage.getItem('menuActive'))
-            $(".side-nav-link[data-id='" + menuActive.parentID + "']").addClass('side-nav-active');
-            let subMenu = $(".sub-menu-item[data-sub-id='" + menuActive.parentID + "']")
-            subMenu.css('display', 'block')
-            subMenu.find('a').each(function () {
-                let $that = $(this)
-                if (menuActive.subID === $that.attr('data-id')) {
-                    let subParent = $that.parents().eq(2)
-                    if (subParent.hasClass('has-treeview')) {
-                        subParent.addClass('menu-open')
-                    }
-                    $that.addClass('sub-active')
-                }
-            })
+            menuActive = JSON.parse(localStorage.getItem('menuActive'))
+        }else{
+            menuActive = {"parentID":"1","subID":"1"}
+            localStorage.setItem('menuActive', JSON.stringify(menuActive))
         }
+        $(".side-nav-link").removeClass('side-nav-active');
+        $('.sub-menu-item').hide();
+        $(".sub-link").removeClass('sub-active');
+        $(".side-nav-link[data-id='" + menuActive.parentID + "']").addClass('side-nav-active');
+        let subMenu = $(".sub-menu-item[data-sub-id='" + menuActive.parentID + "']")
+        subMenu.css('display', 'block')
+        subMenu.find('a').each(function () {
+            let $that = $(this)
+            if (menuActive.subID === $that.attr('data-id')) {
+                let subParent = $that.parents().eq(2)
+                if (subParent.hasClass('has-treeview')) {
+                    subParent.addClass('menu-open')
+                }
+                $that.addClass('sub-active')
+            }
+        })
     }
 })

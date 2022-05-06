@@ -11,10 +11,10 @@ class DcatThemeServiceProvider extends ServiceProvider
     protected $type = self::TYPE_THEME;
 
     protected $css = [
-        'css/index.min.css?v=1.0.3',
+        'css/index.min.css?v=1.0.4',
     ];
     protected $js = [
-        'js/index.js?v=1.0.3',
+        'js/index.js?v=1.0.4',
     ];
 
     public function register()

@@ -77,8 +77,11 @@ Dcat.ready(function () {
         if (!parentIsActive) {
             menuActive = JSON.parse(localStorage.getItem('menuActive'))
         }else{
-            menuActive = {"parentID":"1","subID":"1"}
-            localStorage.setItem('menuActive', JSON.stringify(menuActive))
+            menuActive = JSON.parse(localStorage.getItem('menuActive'));
+            if (!menuActive){
+                menuActive = {"parentID":"1","subID":"1"}
+                localStorage.setItem('menuActive', JSON.stringify(menuActive))
+            }
         }
         $(".side-nav-link").removeClass('side-nav-active');
         $('.sub-menu-item').hide();
